@@ -69,7 +69,7 @@ export class Database {
   }
 
   private buildDbName(baseName: string): string {
-    const PRE_NAME = 'ADDRESSBOOK_DATABASE_'
+    const PRE_NAME = 'ADDRESSBOOK_DATABASE_';
     return PRE_NAME + baseName;
   }
 
