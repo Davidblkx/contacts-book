@@ -1,5 +1,7 @@
 import { cloneDeep } from 'lodash';
 
+import { EventEmitter } from '@angular/core';
+
 import { Database } from './database';
 import { DatabaseCollection } from './models/database-data.model';
 import { DbItem, isDbItem } from './models/db-entity.model';
@@ -7,6 +9,8 @@ import { generateUniqueId } from './tools/id-generator';
 
 /** Collection of data */
 export class Collection<T> {
+
+  public change = new EventEmitter();
 
   /** get copy of current collection */
   public get DbCollection() {
@@ -41,12 +45,14 @@ export class Collection<T> {
     const itemToSave = isDbItem(item) ?
       item : this.buildDbItem(item);
     this._data[itemToSave.id] = itemToSave;
+    this.change.emit();
     return itemToSave;
   }
 
   /** delete an entity with id */
   public delete(id: string) {
     delete this._data[id];
+    this.change.emit();
   }
 
   /** commit changes to database */

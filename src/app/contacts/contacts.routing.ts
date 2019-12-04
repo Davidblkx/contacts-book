@@ -11,7 +11,7 @@ import {
 
 const routes: Routes = [{
   path: '',
-  redirectTo: 'contacts'
+  redirectTo: 'contacts',
 }, {
   path: 'contacts',
   component: ContactComponent,

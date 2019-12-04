@@ -1,3 +1,8 @@
+<div
+  *ngFor="let c of contacts"
+  [routerLink]="'/contacts/' + c.id"
+  routerLinkActive="active"
+>{{c.firstName}} <a (click)="onDelete(c.id)">X</a></div>
 <p-button
   label="Create"
   class="btn-create"
